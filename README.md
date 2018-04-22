@@ -185,10 +185,6 @@ const FIGHT = (fighters = [Ryu, Blanka]) => {
   console.log('FIGHT!!!')
   
   setTimeout(() => {
-      
-    // console.log('fighters[Math.round(Math.random())]: ', 
-    //   fighters[Math.round(Math.random())])
-      
     return console.log(
       'Vencedor: ',
       fighters[
@@ -204,35 +200,56 @@ FIGHT([Ryu, BrainSmasher])
 
 ```js
 // https://repl.it/@suissa/Javascript-Metaprogramming-02
+const MOVES = {
+  'low-punch':  { 
+    'low-punch': () => console.log('give a low punch')
+  },
+  'mid-punch': { 
+    'mid-punch': () => console.log('give a middle punch')
+  },
+  'hig-punch':  { 
+    'hig-punch': () => console.log('give a high punch')
+  },
+  'low-kick':  { 
+    'low-kick': () => console.log('give a low kick')
+  },
+  'mid-kick': { 
+    'mid-kick': () => console.log('give a middle kick')
+  },
+  'hig-kick':  { 
+    'hig-kick': () => console.log('give a high kick')
+  },
+}
+
 const Ryu = {
   name: 'Ryu',
   moves: [
-    { 'low-punch':  () => console.log('give a low punch') },
-    { 'mid-punch':  () => console.log('give a middle punch') },
-    { 'hig-punch':  () => console.log('give a high punch') },
-    { 'low-kick':  () => console.log('give a low kick') },
-    { 'mid-kick':  () => console.log('give a middle kick') },
-    { 'hig-kick':  () => console.log('give a high kick') },
+    MOVES['low-punch'],
+    MOVES['mid-punch'],
+    MOVES['hig-punch'],
+    MOVES['low-kick'],
+    MOVES['mid-kick'],
+    MOVES['hig-kick'],
   ]
 }
 
 const Blanka = {
   name: 'Blanka',
   moves: [
-    { 'low-punch':  () => console.log('give a low punch') },
-    { 'mid-punch':  () => console.log('give a middle punch') },
-    { 'hig-punch':  () => console.log('give a high punch') },
-    { 'low-kick':  () => console.log('give a low kick') },
-    { 'mid-kick':  () => console.log('give a middle kick') },
-    { 'hig-kick':  () => console.log('give a high kick') },
+    MOVES['low-punch'],
+    MOVES['mid-punch'],
+    MOVES['hig-punch'],
+    MOVES['low-kick'],
+    MOVES['mid-kick'],
+    MOVES['hig-kick'],
   ]
 }
 
 const BrainSmasher = {
   name: 'BrainSmasher',
   moves: [
-    { 'hig-punch':  () => console.log('give a high punch') },
-    { 'hig-kick':  () => console.log('give a high kick') },
+    MOVES['hig-punch'],
+    MOVES['hig-kick'],
   ]
 }
 
@@ -240,20 +257,16 @@ const BrainSmasher = {
 const StomachDriller = {
   name: 'StomachDriller',
   moves: [
-    { 'hig-punch':  () => console.log('give a high punch') },
-    { 'hig-kick':  () => console.log('give a high kick') },
+    MOVES['mid-punch'],
+    MOVES['mid-kick'],
   ]
 }
 
 const FIGHT = (fighters = [Ryu, Blanka]) => {
-  const [fighter1, fighter2] = fighters
   
   console.log('FIGHT!!!')
   
   setTimeout(() => {
-      
-    // console.log('fighters[Math.round(Math.random())]: ', 
-    //   fighters[Math.round(Math.random())])
       
     return console.log(
       'Vencedor: ',
