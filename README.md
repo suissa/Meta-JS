@@ -56,3 +56,7 @@ Com isso em mente fiz uma leve pesquisa no Google onde cai [nesse mesmo question
 
 
 
+## Empirismo aka mão na massa
+
+![doutrina segundo a qual todo conhecimento provém unicamente da experiência, limitando-se ao que pode ser captado do mundo externo, pelos sentidos, ou do mundo subjetivo, pela introspecção, sendo ger. descartadas as verdades reveladas e transcendentes do misticismo, ou apriorísticas e inatas do racionalismo.
+](https://i.imgur.com/vXWGUZP.png)
