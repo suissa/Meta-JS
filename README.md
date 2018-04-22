@@ -60,3 +60,13 @@ Com isso em mente fiz uma leve pesquisa no Google onde cai [nesse mesmo question
 
 ![doutrina segundo a qual todo conhecimento provém unicamente da experiência, limitando-se ao que pode ser captado do mundo externo, pelos sentidos, ou do mundo subjetivo, pela introspecção, sendo ger. descartadas as verdades reveladas e transcendentes do misticismo, ou apriorísticas e inatas do racionalismo.
 ](https://i.imgur.com/vXWGUZP.png)
+
+<br>
+<br>
+
+Pensei no seguinte exercício lúdico:
+
+> Vamos pensar que precisamos criar um jogo de luta e queremos pode usar o mesmo código para gerar qualquer tipo de personagem/lutador.
+
+
+*Sim, é para ser simples para entendermos o conceito corretamente para depois partirmos para os cenários reais, blz?*
