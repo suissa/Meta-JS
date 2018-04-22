@@ -774,6 +774,10 @@ module.exports = {
 
 Depois de ter feito esses três eu salvei como cada `[mesmoGolpe]Kick`, pois com isso eu só precisei mandar subistituir a palavra `punch` por `kick`, simprão(sic) né?
 
+![](https://i.imgur.com/m4Gqjqh.png)
+
+![](https://i.imgur.com/di7TU8o.png)
+
 
 ```js
 module.exports = {
