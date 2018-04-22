@@ -63,7 +63,7 @@ Porém o Paradigma que usaremos é o Funcional e nele nós presamos pelo REUSO d
 
 Além de deixar qualquer tipo de colaboração ou criação de novas partes mais complexas e com fazendo com que cada código seja muito específico, no nosso caso deveremos criar um código tão genérico que possa ser usado em diferentes sistemas e/ou frameworks, algo (quase) impossível se você for seguir esse conceito.
 
-Para você entenderem por cima como seria um colega do grupo []() no Telegram enviou o seguinte código:
+Para você entenderem por cima como seria um colega do grupo [Lambda Studygroup](https://t.me/lambdastudygroup) no Telegram enviou o seguinte código:
 
 
 ```js
