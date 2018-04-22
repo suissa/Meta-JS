@@ -748,6 +748,8 @@ FIGHT([Ryu, StomachDriller])
 
 <br>
 
+#### Dica - Refatoração
+
 Está percebendo que o código está aumentando um pouquinho, isso acontece porque nesse exemplo no repl.it eu não estou separando os módulos em arquivos separados.
 
 Então para dar continuidade farei esse código localmente.
