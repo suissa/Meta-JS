@@ -2,7 +2,7 @@
 *Aprenda a fazer metaprogramação com JavaScript!* &lt;3
 
 
-**Minha intenção com a criação desse conteúdo é além de demonstrar a forma que trabalho há um bom tempo, também ensinar você os primeirso passos nessa linda arte que é de programar um programa que se cria em tempo de execução!**
+**Minha intenção com a criação desse conteúdo é além de demonstrar a forma que trabalho há um bom tempo, também ensinar você os primeiros passos nessa linda arte que é de programar um programa que se cria em tempo de execução!**
 
 ![](http://i0.kym-cdn.com/photos/images/original/000/754/474/e32.jpg)
 
@@ -70,3 +70,5 @@ Pensei no seguinte exercício lúdico:
 
 
 *Sim, é para ser simples para entendermos o conceito corretamente para depois partirmos para os cenários reais, blz?*
+
+![](https://i.imgur.com/FNZKWyf.jpg)
