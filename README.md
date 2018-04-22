@@ -358,7 +358,26 @@ console.log('StomachDriller: ', StomachDriller)
 
 <br>
 
-Entretanto esse código ainda não está genérico o suficiente pois estamos acessao os movimentos diretamente de `MOVES`, por isso agora iremos criar a função que cria a lista de movimentos para cada lutador:
+Entretanto esse código ainda não está genérico o suficiente pois estamos acessao os movimentos diretamente de `MOVES`, por isso agora iremos criar a função que cria a lista de movimentos para cada lutador, como precisamos receber uma lista com o nome dos golpes e vamos criar um Objeto com esses nomes e suas funções logicamente iremos utilizar o [reduce](http://mdn.io/reduce):
+
+
+```js
+const createMoves = (names, moves) => 
+  names.reduce( 
+    (actions, name) => Object.assign(actions, moves[name])
+  , {})
+```
+
+Nessa função recebemos um *Array* com os nomes dos golpes e um Objeto que possui todos esses golpes a serem utilizados, depois vamos adicionando cada golpe em `actions`, e fizemos dessa forma tão simples porque nosso Objeto `MOVES` já possui o nome do golpe, caso não possuísse poderíamos fazer assim:
+
+```js
+const createMoves = (names, moves) => 
+  names.reduce( 
+    (actions, name) => Object.assign(actions, { [name]: moves[name] })
+  , {})
+```
+
+Então vejamos como está nosso código até agora:
 
 ```js
 // https://repl.it/@suissa/Javascript-Metaprogramming-04
@@ -387,9 +406,9 @@ const createFighter = (name, moves = []) => ({
   name, moves
 })
 
-const createMoves = (list, moves) => 
-  list.reduce( 
-    (result, move) => Object.assign(result, moves[move])
+const createMoves = (names, moves) => 
+  names.reduce( 
+    (actions, name) => Object.assign(actions, moves[name])
   , {})
 
 const MOVES_RYU = createMoves([
@@ -524,6 +543,7 @@ const MOVES_SD = createMoves([
 ```
 
 Para sua rápida refatoração selecione todos os `MOVES[`, apague e jogue o cursor para o final da linha, no Mac Command ->, volte uma posição para deixar a `,` e aperte o backspace apenas uma vez para deletar `]`, depois basta copiar `createMoves([` para que você substituir o que vier depois do `=` com isso e no final da `]`, colar `, MOVES)`.
+
 
 <br>
 
