@@ -7,6 +7,7 @@
 ![](http://i0.kym-cdn.com/photos/images/original/000/754/474/e32.jpg)
 
 
+
 Antes de botarmos a mão na massa precisamos definir alguns conceitos-chave para o melhor entendimento desse estudo.
 
 <br> 
@@ -54,7 +55,57 @@ Com isso em mente fiz uma leve pesquisa no Google onde cai [nesse mesmo question
 
 > Metaprogramação é um paradigma que permite a manipulação do código de forma mais geral, você programa como o código deve ser programado. A reflexão frequentemente é usada para obter as informações necessárias e alterar o que precisa, mas não é a única forma. E é mais comum ocorrer em tempo de compilação.
 
+### Debate Conceitual
 
+Existe uma característica na metaprogramação que é gerar os arquivos com os códigos desejados, entretanto para fazermos isso com JavaScript muito provavelmente teremos que usar `eval`. Nesse caso nós escrevemos o código que deve ser gerado e criamos ele no seu arquivo respectivo.
+
+Porém o Paradigma que usaremos é o Funcional e nele nós presamos pelo REUSO das menores partes, logo se quisessemos fazer esse gerador nós perderíamos todo o ganho que iremos ter na manutenabilidade e reuso de cada parte gerada.
+
+Além de deixar qualquer tipo de colaboração ou criação de novas partes mais complexas e com fazendo com que cada código seja muito específico, no nosso caso deveremos criar um código tão genérico que possa ser usado em diferentes sistemas e/ou frameworks, algo (quase) impossível se você for seguir esse conceito.
+
+Para você entenderem por cima como seria um colega do grupo []() no Telegram enviou o seguinte código:
+
+
+```js
+// https://gist.github.com/souenzzo/28d7d9ce6f07e604bd2b530cf871b521
+// Programação "OO Tradicional"
+
+const express = require('express')
+const app = express()
+
+app.get('/', indexGet)
+app.post('/', indexPost)
+
+// Programação "Data Driven"
+
+const express = require('express')
+const app = express()
+
+const routes = [
+  ['get', '/', indexGet],
+  ['post', '/', indexPost],
+]
+const applyRoutes(app, routes) => (
+  routes.reduce((app, [method, path, f]) => app[method](path, f))
+)
+
+applyRoutes(app, routes)
+
+// Metaprogramação
+
+const makeRoutes(appName, routesName) => ( ... )
+// makeRoutes("app", "routes") retornaria algo como
+// "(app.get('/', indexGet); app.post('/', indexPost))"
+eval(makeRoutes("app", "routes"))
+```
+
+<br>
+
+> ***Percebeu o como seria péssimo se fossemos implementar esse conceito?***
+
+
+<br>
+<br>
 
 ## Empirismo aka mão na massa
 
