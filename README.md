@@ -31,6 +31,10 @@ Porém, antes o artigo diz o seguinte:
 *fonte: https://pt.wikipedia.org/wiki/Metaprograma%C3%A7%C3%A3o*
 
 
+<br>
+
+<br>
+
 Como eu não aceitei essa afimação como canônica pois **eu não utilizo reflexão!**
 
 Com isso em mente fiz uma leve pesquisa no Google onde cai [nesse mesmo questionamento no StackOverflow BRAZUCA](https://pt.stackoverflow.com/questions/276112/qual-%C3%A9-a-diferen%C3%A7a-entre-metaprograma%C3%A7%C3%A3o-e-reflex%C3%A3o):
