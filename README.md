@@ -91,3 +91,184 @@ Para que você consiga criar um código em metaprogramação de início, pelo me
 
 ![padrões triangulares coloridos](https://uxmag.com/sites/default/files/styles/632x307/adaptive-image/public/article-images/ux-patterns-banner2.png?itok=ikhleFSI)
 
+
+
+```js
+// https://repl.it/@suissa/Javascript-Metaprogramming-00
+const Personagem1 = {
+  name: 'Ryu',
+  moves: [
+    { 'low-punch':  () => console.log('give a low punch') },
+    { 'mid-punch':  () => console.log('give a middle punch') },
+    { 'hig-punch':  () => console.log('give a high punch') },
+    { 'low-kick':  () => console.log('give a low kick') },
+    { 'mid-kick':  () => console.log('give a middle kick') },
+    { 'hig-kick':  () => console.log('give a high kick') },
+  ]
+}
+
+const Personagem2 = {
+  name: 'Blanka',
+  moves: [
+    { 'low-punch':  () => console.log('give a low punch') },
+    { 'mid-punch':  () => console.log('give a middle punch') },
+    { 'hig-punch':  () => console.log('give a high punch') },
+    { 'low-kick':  () => console.log('give a low kick') },
+    { 'mid-kick':  () => console.log('give a middle kick') },
+    { 'hig-kick':  () => console.log('give a high kick') },
+  ]
+}
+
+const Personagem3 = {
+  name: 'Brain Smasher',
+  moves: [
+    { 'hig-punch':  () => console.log('give a high punch') },
+    { 'hig-kick':  () => console.log('give a high kick') },
+  ]
+}
+
+
+const Personagem4 = {
+  name: 'Stomach Driller',
+  moves: [
+    { 'mid-punch':  () => console.log('give a middle punch') },
+    { 'mid-kick':  () => console.log('give a middle kick') },
+  ]
+}
+```
+
+
+
+
+```js
+// https://repl.it/@suissa/Javascript-Metaprogramming-01
+const Ryu = {
+  moves: [
+    { 'low-punch':  () => console.log('give a low punch') },
+    { 'mid-punch':  () => console.log('give a middle punch') },
+    { 'hig-punch':  () => console.log('give a high punch') },
+    { 'low-kick':  () => console.log('give a low kick') },
+    { 'mid-kick':  () => console.log('give a middle kick') },
+    { 'hig-kick':  () => console.log('give a high kick') },
+  ]
+}
+
+const Blanka = {
+  moves: [
+    { 'low-punch':  () => console.log('give a low punch') },
+    { 'mid-punch':  () => console.log('give a middle punch') },
+    { 'hig-punch':  () => console.log('give a high punch') },
+    { 'low-kick':  () => console.log('give a low kick') },
+    { 'mid-kick':  () => console.log('give a middle kick') },
+    { 'hig-kick':  () => console.log('give a high kick') },
+  ]
+}
+
+const BrainSmasher = {
+  moves: [
+    { 'hig-punch':  () => console.log('give a high punch') },
+    { 'hig-kick':  () => console.log('give a high kick') },
+  ]
+}
+
+
+const StomachDriller = {
+  moves: [
+    { 'mid-punch':  () => console.log('give a middle punch') },
+    { 'mid-kick':  () => console.log('give a middle kick') },
+  ]
+}
+
+const FIGHT = (fighters = [Ryu, Blanka]) => {
+  const [fighter1, fighter2] = fighters
+  
+  console.log('FIGHT!!!')
+  
+  setTimeout(() => {
+      
+    // console.log('fighters[Math.round(Math.random())]: ', 
+    //   fighters[Math.round(Math.random())])
+      
+    return console.log(
+      'Vencedor: ',
+      fighters[
+        Math.round(Math.random())
+      ]
+    )
+  }, 1000)
+}
+
+FIGHT([Ryu, BrainSmasher])
+```
+
+
+```js
+// https://repl.it/@suissa/Javascript-Metaprogramming-02
+const Ryu = {
+  name: 'Ryu',
+  moves: [
+    { 'low-punch':  () => console.log('give a low punch') },
+    { 'mid-punch':  () => console.log('give a middle punch') },
+    { 'hig-punch':  () => console.log('give a high punch') },
+    { 'low-kick':  () => console.log('give a low kick') },
+    { 'mid-kick':  () => console.log('give a middle kick') },
+    { 'hig-kick':  () => console.log('give a high kick') },
+  ]
+}
+
+const Blanka = {
+  name: 'Blanka',
+  moves: [
+    { 'low-punch':  () => console.log('give a low punch') },
+    { 'mid-punch':  () => console.log('give a middle punch') },
+    { 'hig-punch':  () => console.log('give a high punch') },
+    { 'low-kick':  () => console.log('give a low kick') },
+    { 'mid-kick':  () => console.log('give a middle kick') },
+    { 'hig-kick':  () => console.log('give a high kick') },
+  ]
+}
+
+const BrainSmasher = {
+  name: 'BrainSmasher',
+  moves: [
+    { 'hig-punch':  () => console.log('give a high punch') },
+    { 'hig-kick':  () => console.log('give a high kick') },
+  ]
+}
+
+
+const StomachDriller = {
+  name: 'StomachDriller',
+  moves: [
+    { 'hig-punch':  () => console.log('give a high punch') },
+    { 'hig-kick':  () => console.log('give a high kick') },
+  ]
+}
+
+const FIGHT = (fighters = [Ryu, Blanka]) => {
+  const [fighter1, fighter2] = fighters
+  
+  console.log('FIGHT!!!')
+  
+  setTimeout(() => {
+      
+    // console.log('fighters[Math.round(Math.random())]: ', 
+    //   fighters[Math.round(Math.random())])
+      
+    return console.log(
+      'Vencedor: ',
+      fighters[
+        Math.round(Math.random())
+      ]
+    )
+  }, 1000)
+}
+
+FIGHT([Ryu, BrainSmasher])
+```
+
+
+```js
+
+
+```
