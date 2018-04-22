@@ -72,3 +72,22 @@ Pensei no seguinte exercício lúdico:
 *Sim, é para ser simples para entendermos o conceito corretamente para depois partirmos para os cenários reais, blz?*
 
 ![](https://i.imgur.com/FNZKWyf.jpg)
+
+
+<br>
+
+### Fluxo de Pensamento
+
+Para que você consiga criar um código em metaprogramação de início, pelo menos para mim, é você programar da forma normal para que você consiga encontrar e analisar os padrões que se repetem para que depois refatore ele para que fique genérico pois daí sim nós iremos automatizar a execução desse código que irá se auto-gerar.
+
+1. Programar normalmente.
+2. Inferiros os padrões.
+3. Refatorar para generalizar.
+4. Automatizar a execução. 
+
+<br>
+
+### Inferindo Padrões
+
+![padrões triangulares coloridos](https://uxmag.com/sites/default/files/styles/632x307/adaptive-image/public/article-images/ux-patterns-banner2.png?itok=ikhleFSI)
+
