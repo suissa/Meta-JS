@@ -553,3 +553,238 @@ Para sua rápida refatoração selecione todos os `MOVES[`, apague e jogue o cur
 <br>
 
 ![](http://geradormemes.com/media/created/dntkw5.jpg)
+
+
+
+### Generalizando - Modularizando
+
+![](http://retaildesignblog.net/wp-content/uploads/2016/11/Modular-Concrete-tiles-by-Patrycja-Domanska-and-Tanja-Lightfoot02.jpg)
+
+Para Generalizar nosso código precisamos inicialmente separar as partes que se repetem em módulos independentes, então vamos começar pelos golpes:
+
+```js
+// https://repl.it/@suissa/Javascript-Metaprogramming-05
+const lowPunch = {
+  'low-punch': () => console.log('give a low punch')
+}
+const midPunch = {
+  'mid-punch': () => console.log('give a middle punch')
+}
+const higPunch = {
+  'hig-punch': () => console.log('give a high punch')
+}
+const lowKick = {
+  'low-kick': () => console.log('give a low kick')
+}
+const midKick = {
+  'mid-kick': () => console.log('give a middle kick')
+}
+const higKick = {
+  'hig-kick': () => console.log('give a high kick')
+}
+
+const MOVES = {
+  'low-punch': lowPunch,
+  'mid-punch': midPunch,
+  'hig-punch': higPunch,
+  'low-kick': lowKick,
+  'mid-kick': midKick,
+  'hig-kick': higKick,
+}
+```
+
+Para essa refatoração iremos RECORTAR os pedaços já existentes para separar em suas próprias constantes, por exemplo:
+
+```js
+const lowPunch = {
+  'low-punch': () => console.log('give a low punch')
+}
+```
+
+Então para isso eu recortei essa parte:
+
+```js
+const MOVES = {
+  'low-punch': /** AQUI **/,
+  'mid-punch': {
+    'mid-punch': () => console.log('give a middle punch')
+  },
+  'hig-punch': {
+    'hig-punch': () => console.log('give a high punch')
+  },
+  'low-kick': {
+    'low-kick': () => console.log('give a low kick')
+  },
+  'mid-kick': {
+    'mid-kick': () => console.log('give a middle kick')
+  },
+  'hig-kick': {
+    'hig-kick': () => console.log('give a high kick')
+  },
+}
+```
+
+Para depois substituir pelo nome da constante criada:
+
+```js
+// https://repl.it/@suissa/Javascript-Metaprogramming-05
+const lowPunch = {
+  'low-punch': () => console.log('give a low punch')
+}
+
+const MOVES = {
+  'low-punch': lowPunch,
+}
+```
+
+<br>
+
+Com isso nosso código ficará assim:
+
+
+```js
+// https://repl.it/@suissa/Javascript-Metaprogramming-05
+const lowPunch = {
+  'low-punch': () => console.log('give a low punch')
+}
+const midPunch = {
+  'mid-punch': () => console.log('give a middle punch')
+}
+const higPunch = {
+  'hig-punch': () => console.log('give a high punch')
+}
+const lowKick = {
+  'low-kick': () => console.log('give a low kick')
+}
+const midKick = {
+  'mid-kick': () => console.log('give a middle kick')
+}
+const higKick = {
+  'hig-kick': () => console.log('give a high kick')
+}
+
+const MOVES = {
+  'low-punch': lowPunch,
+  'mid-punch': midPunch,
+  'hig-punch': higPunch,
+  'low-kick': lowKick,
+  'mid-kick': midKick,
+  'hig-kick': higKick,
+}
+
+const createFighter = (name, moves = []) => ({
+  name, moves
+})
+
+const createMoves = (names, moves) => 
+  names.reduce( 
+    (actions, name) => Object.assign(actions, moves[name])
+  , {})
+
+const MOVES_RYU = createMoves([
+  'low-punch',
+  'mid-punch',
+  'hig-punch',
+  'low-kick',
+  'mid-kick',
+  'hig-kick',
+], MOVES)
+
+const MOVES_BLANKA = createMoves([
+  'low-punch',
+  'mid-punch',
+  'hig-punch',
+  'low-kick',
+  'mid-kick',
+  'hig-kick',
+], MOVES)
+
+const MOVES_BS = createMoves([
+  'hig-punch',
+  'hig-kick',
+], MOVES)
+
+const MOVES_SD = createMoves([
+  'mid-punch',
+  'mid-kick',
+], MOVES)
+
+const Ryu = createFighter('Ryu', MOVES_RYU)
+console.log('Ryu: ', Ryu)
+
+const Blanka = createFighter('Blanka', MOVES_BLANKA)
+console.log('Blanka: ', Blanka)
+
+const BrainSmasher = createFighter('BrainSmasher', MOVES_BS)
+console.log('BrainSmasher: ', BrainSmasher)
+
+const StomachDriller = createFighter('StomachDriller', MOVES_SD)
+console.log('StomachDriller: ', StomachDriller)
+
+
+const FIGHT = (fighters = [Ryu, Blanka]) => {
+
+  const [p1, p2] = fighters
+  console.log('player1: ', p1)
+  console.log('player2: ', p2)
+
+  console.log('\nFIGHT!!!\n\n')
+
+  setTimeout(() => {
+
+    return console.log(
+      '\nVencedor: ',
+      fighters[
+        Math.round(Math.random())
+      ].name
+    )
+  }, 1000)
+}
+
+FIGHT([Ryu, BrainSmasher])
+FIGHT([Ryu, Blanka])
+FIGHT([Ryu, StomachDriller])
+```
+
+<br>
+
+Está percebendo que o código está aumentando um pouquinho, isso acontece porque nesse exemplo no repl.it eu não estou separando os módulos em arquivos separados.
+
+Então para dar continuidade farei esse código localmente.
+
+Para iniciarmos quero que você recorte a constante `lowPunch` e salve num arquivo em separado, dentro de uma pasta chamada `actions` e o nome desse arquivo será O MESMO da constante copiada, `lowPunch.js`, nós já veremos o porquê eu não tenho esse nome no código mas sim no seu nome.
+
+```js
+module.exports = {
+  'low-punch': () => console.log('give a low punch')
+}
+```
+
+Agora faça isso com todas as outras, basta você pegar esse que acabou de criar e **Salvar Como** com o nome do próximo golpe, até finalizar. Para facilitar basta que você copie apenas a linha exata da função e cole no arquivo que já está com o nome do novo golpe, PA PUM!
+
+```js
+module.exports = {
+  'mid-punch': () => console.log('give a middle punch')
+}
+
+module.exports = {
+  'hig-punch': () => console.log('give a high punch')
+}
+```
+
+Depois de ter feito esses três eu salvei como cada `[mesmoGolpe]Kick`, pois com isso eu só precisei mandar subistituir a palavra `punch` por `kick`, simprão(sic) né?
+
+
+```js
+module.exports = {
+  'low-kick': () => console.log('give a low kick')
+}
+
+module.exports = {
+  'mid-kick': () => console.log('give a middle kick')
+}
+
+module.exports = {
+  'hig-kick': () => console.log('give a high kick')
+}
+```
