@@ -92,6 +92,7 @@ Para que você consiga criar um código em metaprogramação de início, pelo me
 ![padrões triangulares coloridos](https://uxmag.com/sites/default/files/styles/632x307/adaptive-image/public/article-images/ux-patterns-banner2.png?itok=ikhleFSI)
 
 
+Inicialmente vamos definir a Estrutura de Dados dos personagens e suas ações:
 
 ```js
 // https://repl.it/@suissa/Javascript-Metaprogramming-00
@@ -137,7 +138,9 @@ const Personagem4 = {
 }
 ```
 
+<br>
 
+Agora vamos apenas colocar um simulador de luta onde entrará um Array de lutadores e no final um será escolhido o vencedor:
 
 
 ```js
@@ -197,6 +200,16 @@ const FIGHT = (fighters = [Ryu, Blanka]) => {
 FIGHT([Ryu, BrainSmasher])
 ```
 
+<br>
+
+Porém olhe só como é nosso retorno:
+
+```js
+FIGHT!!!
+Vencedor:  { moves: [ { 'hig-punch': [Function] }, { 'hig-kick': [Function] } ] }
+```
+
+Dessa forma se lutadores tiverem os mesmos golpes não saberemos quem foi apenas pelo nome da constante, logo precisamos retirar essa informação do código e colocar na configuração do personagem, dessa forma:
 
 ```js
 // https://repl.it/@suissa/Javascript-Metaprogramming-02
@@ -280,8 +293,107 @@ const FIGHT = (fighters = [Ryu, Blanka]) => {
 FIGHT([Ryu, BrainSmasher])
 ```
 
+Além disso percebeu que também retirei TODAS as ações pois elas apenas estavam duplicadas em lugares diferentes, sabendo disso eu criei um Objeto o qual centralizará TODAS as ações possíveis de serem utilizadas, **dessa forma nosso reuso e manutenção aumentam drasticamente!**
+
+
+Percebeu que eu não criei um Array, pois seria o pensamento mais lógico pois é uma coleção de movimentos, porém como precisamos acessar esses movimentos pelo seu nome DEVEMOS utilizar para isso o Objeto, o qual trabalhará como uma *HashTable*
+
+> In computing, a hash table (hash map) is a data structure which implements an associative array abstract data type, a structure that can map keys to values.
+
+**fonte: https://en.wikipedia.org/wiki/Hash_table**
+
 
 ```js
+// https://repl.it/@suissa/Javascript-Metaprogramming-03
+const MOVES = {
+  'low-punch':  { 
+    'low-punch': () => console.log('give a low punch')
+  },
+  'mid-punch': { 
+    'mid-punch': () => console.log('give a middle punch')
+  },
+  'hig-punch':  { 
+    'hig-punch': () => console.log('give a high punch')
+  },
+  'low-kick':  { 
+    'low-kick': () => console.log('give a low kick')
+  },
+  'mid-kick': { 
+    'mid-kick': () => console.log('give a middle kick')
+  },
+  'hig-kick':  { 
+    'hig-kick': () => console.log('give a high kick')
+  },
+}
+
+const createFighter = (name, moves = []) => ({
+  name, moves
+})
+  
+
+const MOVES_RYU = [
+  MOVES['low-punch'],
+  MOVES['mid-punch'],
+  MOVES['hig-punch'],
+  MOVES['low-kick'],
+  MOVES['mid-kick'],
+  MOVES['hig-kick'],
+]
+
+const MOVES_BLANKA = [
+  MOVES['low-punch'],
+  MOVES['mid-punch'],
+  MOVES['hig-punch'],
+  MOVES['low-kick'],
+  MOVES['mid-kick'],
+  MOVES['hig-kick'],
+]
+
+const MOVES_BS = [
+  MOVES['hig-punch'],
+  MOVES['hig-kick'],
+]
+
+const MOVES_SD = [
+  MOVES['mid-punch'],
+  MOVES['mid-kick'],
+]
+const Ryu = createFighter('Ryu', MOVES_RYU)
+console.log('Ryu: ', Ryu)
 
 
+const Blanka = createFighter('Blanka', MOVES_BLANKA)
+console.log('Blanka: ', Blanka)
+
+
+const BrainSmasher = createFighter('BrainSmasher', MOVES_BS)
+console.log('BrainSmasher: ', BrainSmasher)
+
+
+const StomachDriller = createFighter('StomachDriller', MOVES_SD)
+console.log('StomachDriller: ', StomachDriller)
+
+
+const FIGHT = (fighters = [Ryu, Blanka]) => {
+  
+  const [p1, p2] = fighters
+  console.log('player1: ', p1)
+  console.log('player2: ', p2)
+  
+  console.log('\nFIGHT!!!\n\n')
+  
+  setTimeout(() => {
+      
+    return console.log(
+      '\nVencedor: ',
+      fighters[
+        Math.round(Math.random())
+      ].name
+    )
+  }, 1000)
+}
+
+FIGHT([Ryu, BrainSmasher])
+FIGHT([Ryu, Blanka])
+FIGHT([Ryu, StomachDriller])
 ```
