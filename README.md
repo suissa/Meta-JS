@@ -522,3 +522,14 @@ const MOVES_SD = createMoves([
   'mid-kick',
 ], MOVES)
 ```
+
+Para sua rápida refatoração selecione todos os `MOVES[`, apague e jogue o cursor para o final da linha, no Mac Command ->, volte uma posição para deixar a `,` e aperte o backspace apenas uma vez para deletar `]`, depois basta copiar `createMoves([` para que você substituir o que vier depois do `=` com isso e no final da `]`, colar `, MOVES)`.
+
+<br>
+
+> ***MUITO FÁCIL NÃO?!***
+
+
+<br>
+
+![](http://geradormemes.com/media/created/dntkw5.jpg)
