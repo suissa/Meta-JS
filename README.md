@@ -542,7 +542,7 @@ const MOVES_SD = createMoves([
 ], MOVES)
 ```
 
-Para sua rápida refatoração selecione todos os `MOVES[`, apague e jogue o cursor para o final da linha, no Mac Command ->, volte uma posição para deixar a `,` e aperte o backspace apenas uma vez para deletar `]`, depois basta copiar `createMoves([` para que você substituir o que vier depois do `=` com isso e no final da `]`, colar `, MOVES)`.
+Para sua rápida refatoração selecione todos os `MOVES[`, apague e jogue o cursor para o final da linha, no Mac Command + [setinha pro lado direito], volte uma posição para deixar a `,` e aperte o backspace apenas uma vez para deletar `]`, depois basta copiar `createMoves([` para que você substituir o que vier depois do `=` com isso e no final da `]`, colar `, MOVES)`.
 
 
 <br>
