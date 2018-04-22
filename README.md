@@ -1,4 +1,4 @@
-# Meta-JS
+# JavaScript - Metaprogramação
 *Aprenda a fazer metaprogramação com JavaScript!* &lt;3
 
 
@@ -9,7 +9,9 @@ Minha intenção com a criação desse conteúdo é além de demonstrar a forma 
 
 Antes de botarmos a mão na massa precisamos definir alguns conceitos-chave para o melhor entendimento desse estudo.
 
-# Emabasamento Teórico
+## Emabasamento Teórico
+
+### Metaprogramação
 
 > Metaprogramação é a programação de programas que escrevem ou manipulam outros programas (ou a si próprios) assim como seus dados, ou que fazem parte do trabalho em tempo de compilação. Em alguns casos, isso permite que os programadores sejam mais produtivos ao evitar que parte do código seja escrita manualmente.
 
